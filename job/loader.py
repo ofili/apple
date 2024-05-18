@@ -1,4 +1,5 @@
 from abc import ABC, abstractmethod
+from pyspark.sql import DataFrame
 
 
 class LoadStrategy(ABC):
@@ -7,19 +8,19 @@ class LoadStrategy(ABC):
     """
 
     @abstractmethod
-    def load(self, df, path, mode, params=None):
+    def load(self, df: DataFrame, path, mode="overwrite", params=None):
         pass
 
 
 class LoadToDBFS(LoadStrategy):
 
-    def load(self, df, path, mode, params=None):
+    def load(self, df, path, mode="overwrite", params=None):
         df.write.mode(mode).save(path)
 
 
 class LoadToParquetWithPartition(LoadStrategy):
 
-    def load(self, df, path, mode, params=None):
+    def load(self, df, path, mode="overwrite", params=None):
         partition_by_columns = params.get("partitionByColumns", [])
         df.write.format("parquet").mode(mode).partitionBy(*partition_by_columns).save(
             path
@@ -27,9 +28,11 @@ class LoadToParquetWithPartition(LoadStrategy):
 
 
 class LoadToDeltaTable(LoadStrategy):
-
-    def load(self, df, path, mode, params=None):
-        df.write.format("delta").mode(mode).saveAsTable(path)
+    def load(self, df: DataFrame, path, mode="overwrite", params=None):
+        df.write \
+        .format("delta") \
+        .mode(mode) \
+        .saveAsTable(path, partitionBy=params.get("partitionByColumns", []))
 
 
 class DataSink:

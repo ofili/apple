@@ -9,8 +9,9 @@ class CustomerTransactionsExtractor(MultiSourceExtractor):
             configs=[
             DataSourceConfig("csv", "/home/ofili/projects/sparkapps/apple_analytics/data/customer.csv"),
             DataSourceConfig("csv", "/home/ofili/projects/sparkapps/apple_analytics/data/transaction.csv"),
+            DataSourceConfig("csv", "/home/ofili/projects/sparkapps/apple_analytics/data/products.csv")
             ],
-            data_source_names=["customer", "transaction"]
+            data_source_names=["customer", "transaction", "product"]
         )
 
     def extract(self):
@@ -29,10 +30,16 @@ class CustomerTransactionsExtractor(MultiSourceExtractor):
         if transactions_data is None:
             logger.error("Failed to extract transactions data")
             return None
+        
+        product_data = extracted_data.get("product")
+        if product_data is None:
+            logger.error("Failed to extract products data")
+            return None
 
         result = {
             "customers": customer_data,
             "transactions": transactions_data,
+            "products": product_data
         }
         logger.info("Extracted customer and transactions data")
         return result
