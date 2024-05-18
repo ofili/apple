@@ -1,0 +1,38 @@
+from job.extractor import DataSourceConfig, MultiSourceExtractor
+from core.logging.logger import logger
+
+
+class CustomerTransactionsExtractor(MultiSourceExtractor):
+    def __init__(self, spark):
+        super().__init__(
+            spark, 
+            configs=[
+            DataSourceConfig("csv", "/home/ofili/projects/sparkapps/apple_analytics/data/customer.csv"),
+            DataSourceConfig("csv", "/home/ofili/projects/sparkapps/apple_analytics/data/transaction.csv"),
+            ],
+            data_source_names=["customer", "transaction"]
+        )
+
+    def extract(self):
+        extracted_data = super().extract()
+
+        if extracted_data is None:
+            logger.error("Failed to extract customer and transactions data")
+            return None
+        
+        customer_data = extracted_data.get("customer")
+        if customer_data is None:
+            logger.error("Failed to extract customer data")
+            return None
+
+        transactions_data = extracted_data.get("transaction")
+        if transactions_data is None:
+            logger.error("Failed to extract transactions data")
+            return None
+
+        result = {
+            "customers": customer_data,
+            "transactions": transactions_data,
+        }
+        logger.info("Extracted customer and transactions data")
+        return result
