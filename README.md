@@ -1,19 +1,15 @@
 # Apple Store Sales Data Analysis
-This is a data project to analyze the Apple Store's sales data. The project is based on the [datamade/apple-store-saless](https://github.com/datamade/apple-store-saless) repository.
+This is a data project to analyze sample for Apple product sales data.
 
+## Overview
 The goal of this project is to analyze the data and create visualizations to help understand the trends and patterns in the sales data while answering questions such as: 
 - What customers purchased Airpods after purchasing the iPhone.
 - What customers purchased Airpods and the iPhone.
 - List all products purchased by customers after their initial purchase.
 
-## Data Source
-The data is from the [Apple Store](https://www.apple.com/shop/buy-iphone/) and is available for download at [https://www.apple.com/shop/buy-iphone/](https://www.apple.com/shop/buy-iphone/).
 
 ## Data Processing
 The data is processed using the [Pyspark](https://spark.apache.org/docs/latest/index.html) library. The data is loaded into a Spark DataFrame and then processed using a series of transformations. The final output is a DataFrame containing the customer data, transaction data, and product data.
-
-## Data
-The data is available at [https://github.com/datamade/apple-store-saless](https://github.com/datamade/apple-store-saless).
 
 ## Data Dictionary
 
@@ -49,7 +45,10 @@ The data is available at [https://github.com/datamade/apple-store-saless](https:
 
 To install the project, you will need to have Python 3 installed on your computer. You can then use the following command to install the required packages:
 
+
 ```
+git clone https://github.com/ofili/apple.git
+cd apple
 pip install -r requirements.txt
 ```
 
@@ -68,11 +67,7 @@ This will start the Spark application and process the data.
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## Contact
-If you have any questions or comments, please feel free to contact me at [ofililewis@gmail.com](mailto:ofililewis@gmail.com).
-
 ## Acknowledgments
-* [datamade/apple-store-saless](https://github.com/datamade/apple-store-saless)
 * [pyspark](https://spark.apache.org/docs/latest/index.html)
 * [matplotlib](https://matplotlib.org/)
 * [scikit-learn](https://scikit-learn.org/stable/)
