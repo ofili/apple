@@ -12,16 +12,6 @@ The data is from the [Apple Store](https://www.apple.com/shop/buy-iphone/) and i
 ## Data Processing
 The data is processed using the [Pyspark](https://spark.apache.org/docs/latest/index.html) library. The data is loaded into a Spark DataFrame and then processed using a series of transformations. The final output is a DataFrame containing the customer data, transaction data, and product data.
 
-## Data Visualization
-The data is visualized using a series of charts and graphs. The charts and graphs are created using the [Matplotlib](https://matplotlib.org/) library in Python.
-
-## Data Analysis
-The data is analyzed using a series of statistical techniques and algorithms. The analysis is performed using the [Scikit-learn](https://scikit-learn.org/stable/) library in Python.
-
-
-
-
-
 ## Data
 The data is available at [https://github.com/datamade/apple-store-saless](https://github.com/datamade/apple-store-saless).
 
