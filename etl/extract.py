@@ -7,9 +7,9 @@ class CustomerTransactionsExtractor(MultiSourceExtractor):
         super().__init__(
             spark, 
             configs=[
-            DataSourceConfig("csv", "/home/ofili/projects/sparkapps/apple_analytics/data/customer.csv"),
-            DataSourceConfig("csv", "/home/ofili/projects/sparkapps/apple_analytics/data/transaction.csv"),
-            DataSourceConfig("csv", "/home/ofili/projects/sparkapps/apple_analytics/data/products.csv")
+            DataSourceConfig("csv", "data/customer.csv"),
+            DataSourceConfig("csv", "data/transaction.csv"),
+            DataSourceConfig("csv", "data/products.csv")
             ],
             data_source_names=["customer", "transaction", "product"]
         )

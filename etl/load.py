@@ -10,12 +10,12 @@ class AirpodsAfterIphoneLoader(Loader):
          get_sink(
             type="parquet_with_partition",
             df=self.dataframe,
-            path="/home/ofili/projects/sparkapps/apple_analytics/data/output/airpods_after_iphone",
+            path="output/airpods_after_iphone",
             mode="overwrite",
             params=params,
         ).load_dataframe(
             df=self.dataframe,
-            path="/home/ofili/projects/sparkapps/apple_analytics/data/output/airpods_after_iphone",
+            path="output/airpods_after_iphone",
             mode="overwrite",
             params=params,
         )
@@ -45,10 +45,10 @@ class ProductsAfterInitialPurchaseLoader(Loader):
         get_sink(
             type="dbfs",
             df=self.dataframe,
-            path="/home/ofili/projects/sparkapps/apple_analytics/data/output/products_after_initial_purchase",
+            path="output/products_after_initial_purchase",
             mode="overwrite",
         ).load_dataframe(
             df=self.dataframe,
-            path="/home/ofili/projects/sparkapps/apple_analytics/data/output/products_after_initial_purchase",
+            path="output/products_after_initial_purchase",
             mode="overwrite",
         )
